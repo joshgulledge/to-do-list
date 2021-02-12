@@ -1,0 +1,24 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshgulledge/to-do-list.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshgulledge/to-do-list/issues"
+  },
+  "homepage": "https://github.com/joshgulledge/to-do-list#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.5.1"
+  }
+}
