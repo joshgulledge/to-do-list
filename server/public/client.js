@@ -3,8 +3,47 @@ console.log('Js is up and running');
 $(document).ready(andGo);
 
 function andGo() {
-  console.log('jQuery is running right on time');
+  $('#add-task-btn').on('click', addTask);
   getData();
+}
+
+function addTask() {
+  // gather the information
+  // put into an object
+  const newTask = {
+    task_name: $('#task-name-input').val(),
+    completion_time: $('#how-long-input').val(),
+    complete: $('#is-complete').val(),
+  };
+  clearInputs();
+  sendTaskToDB(newTask);
+
+  // console.log('newTask in addTask function', newTask);
+}
+
+function sendTaskToDB(theNewTask) {
+  // console.log('in send task', theNewTask);
+  $.ajax({
+    method: 'POST',
+    url: '/toDoItem/postOnServer',
+    data: {
+      newTask: theNewTask,
+    },
+  })
+    .then((res) => {
+      console.log('response from server', res);
+      // clear existing list
+      $('.table-of-toDo').empty();
+      // get data, now with added task
+      getData();
+    })
+    .catch((err) => console.error(err));
+}
+
+function clearInputs() {
+  $('#task-name-input').val('');
+  $('#how-long-input').val('');
+  $('#is-complete').val('');
 }
 
 function getData() {

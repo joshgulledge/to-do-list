@@ -9,7 +9,7 @@ const config = {
 const pool = new pg.Pool(config);
 
 pool.on('connect', () => {
-  console.log('connected to postgres');
+  // console.log('connected to postgres');
 });
 
 pool.on('error', (err) => {
