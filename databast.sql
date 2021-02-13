@@ -8,6 +8,6 @@ CREATE TABLE "to_do_list"
 -- ("task_name", "completion_time", "complete")
 -- VALUES
 -- ('taxes', 4, FALSE);
--- ('get groceries', 1, FALSE),
--- ('renew my driver liscense', 3, FALSE),
--- ('prime homework', 8, TRUE);
+('get groceries', 1, FALSE),
+('renew my driver liscense', 3, FALSE),
+('prime homework', 8, TRUE);
