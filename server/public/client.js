@@ -3,8 +3,16 @@ console.log('Js is up and running');
 $(document).ready(andGo);
 
 function andGo() {
-  $('#add-task-btn').on('click', addTask);
+  // start with existing data
   getData();
+
+  // start e listeners
+  $('#add-task-btn').on('click', addTask);
+  $(document).on('click', '.delete-btn', deleteBtn);
+}
+
+function deleteBtn() {
+  console.log($(this).data('id'));
 }
 
 function addTask() {
@@ -77,7 +85,7 @@ function renderData(itemsList) {
         <td>${obj.task_name}</td>
         <td>${obj.completion_time}</td>
         <td>${obj.complete}</td>
-        <td><button class="delete-btn">Delete</button></td> 
+        <td><button class="delete-btn" data-id="${obj.id}">Delete</button></td> 
       </tr>
     `);
   });
