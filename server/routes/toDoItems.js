@@ -5,11 +5,12 @@ const pool = require('../modules/pool');
 // the "get" information call...
 router.get('/', (req, res) => {
   // set the query that i know works
-  let sqlText = `SELECT * FROM "to_do_list";`;
+  let SQLtext = `SELECT * FROM "to_do_list"
+  ORDER BY "id" ASC;`;
 
   // send the query to the DB
   pool
-    .query(sqlText)
+    .query(SQLtext)
     .then((dbRes) => {
       // send back results of the db query
       // this is an obj with "rows"
@@ -67,7 +68,7 @@ router.delete('/:id', (req, res) => {
   // grab the id of task that was clicked
   let taskId = req.params.id;
 
-  console.log('task id is ', taskId);
+  // console.log('task id is ', taskId);
 
   // the SQL code for the database
   let SQLtext = `
@@ -79,7 +80,31 @@ router.delete('/:id', (req, res) => {
   pool
     .query(SQLtext, [taskId])
     .then((dbRes) => {
-      console.log('dbRes', dbRes);
+      // console.log('dbRes', dbRes);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+});
+
+router.put('/:id', (req, res) => {
+  const taskId = req.params.id;
+
+  // console.log(req.body.isComplete);
+  const newValue = `${req.body.isComplete === 'true' ? 'false' : 'true'}`;
+
+  const SQLtext = `
+  UPDATE "to_do_list"
+  SET "complete" = $1
+  WHERE "id" = $2
+  `;
+
+  pool
+    .query(SQLtext, [newValue, taskId])
+    .then((dbRes) => {
+      // console.log('dbRes', dbRes);
       res.sendStatus(200);
     })
     .catch((err) => {

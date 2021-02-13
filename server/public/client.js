@@ -9,6 +9,28 @@ function andGo() {
   // start e listeners
   $('#add-task-btn').on('click', addTask);
   $(document).on('click', '.delete-btn', deleteBtn);
+  $(document).on('click', '.complete-task-btn', completeTaskBtn);
+}
+
+function completeTaskBtn() {
+  console.log($(this).data('id'), $(this).data('bool'));
+
+  const taskId = $(this).data('id');
+  const isComplete = $(this).data('bool');
+
+  $.ajax({
+    method: 'PUT',
+    url: `/toDoItem/${taskId}`,
+    data: {
+      isComplete,
+    },
+  })
+    .then((res) => {
+      console.log(res);
+      $('.table-of-toDo').empty();
+      getData();
+    })
+    .catch((err) => console.error(err));
 }
 
 function deleteBtn() {
@@ -19,7 +41,7 @@ function deleteBtn() {
     url: `/toDoItem/${theTask}`,
   })
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       $('.table-of-toDo').empty();
 
       getData();
@@ -97,6 +119,11 @@ function renderData(itemsList) {
         <td>${obj.task_name}</td>
         <td>${obj.completion_time}</td>
         <td>${obj.complete}</td>
+        ${
+          obj.complete === false
+            ? `<td><button class="complete-task-btn" data-id="${obj.id}" data-bool="${obj.complete}">Mark Complete</button></td>`
+            : `<td><button class="complete-task-btn" data-id="${obj.id}" data-bool="${obj.complete}">Mark Incomplete</button></td>`
+        }
         <td><button class="delete-btn" data-id="${obj.id}">Delete</button></td> 
       </tr>
     `);
