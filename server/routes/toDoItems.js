@@ -61,7 +61,31 @@ router.post('/postOnServer', (req, res) => {
     complete: false
   }
 }
-
 */
+
+router.delete('/:id', (req, res) => {
+  // grab the id of task that was clicked
+  let taskId = req.params.id;
+
+  console.log('task id is ', taskId);
+
+  // the SQL code for the database
+  let SQLtext = `
+  DELETE FROM "to_do_list"
+  WHERE "id"=$1
+  `;
+
+  // actually send to the db
+  pool
+    .query(SQLtext, [taskId])
+    .then((dbRes) => {
+      console.log('dbRes', dbRes);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;

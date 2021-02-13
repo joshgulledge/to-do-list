@@ -3,8 +3,28 @@ console.log('Js is up and running');
 $(document).ready(andGo);
 
 function andGo() {
-  $('#add-task-btn').on('click', addTask);
+  // start with existing data
   getData();
+
+  // start e listeners
+  $('#add-task-btn').on('click', addTask);
+  $(document).on('click', '.delete-btn', deleteBtn);
+}
+
+function deleteBtn() {
+  const theTask = $(this).data('id');
+
+  $.ajax({
+    method: 'DELETE',
+    url: `/toDoItem/${theTask}`,
+  })
+    .then((res) => {
+      console.log(res);
+      $('.table-of-toDo').empty();
+
+      getData();
+    })
+    .catch((err) => console.error(err));
 }
 
 function addTask() {
@@ -77,7 +97,7 @@ function renderData(itemsList) {
         <td>${obj.task_name}</td>
         <td>${obj.completion_time}</td>
         <td>${obj.complete}</td>
-        <td><button class="delete-btn">Delete</button></td> 
+        <td><button class="delete-btn" data-id="${obj.id}">Delete</button></td> 
       </tr>
     `);
   });
