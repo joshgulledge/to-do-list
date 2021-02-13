@@ -12,7 +12,19 @@ function andGo() {
 }
 
 function deleteBtn() {
-  console.log($(this).data('id'));
+  const theTask = $(this).data('id');
+
+  $.ajax({
+    method: 'DELETE',
+    url: `/toDoItem/${theTask}`,
+  })
+    .then((res) => {
+      console.log(res);
+      $('.table-of-toDo').empty();
+
+      getData();
+    })
+    .catch((err) => console.error(err));
 }
 
 function addTask() {
