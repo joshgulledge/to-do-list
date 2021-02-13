@@ -15,6 +15,13 @@ function addTask() {
     completion_time: $('#how-long-input').val(),
     complete: $('#is-complete').val(),
   };
+
+  // make sure all values are put in
+  if (!newTask.task_name || !newTask.completion_time || !newTask.complete) {
+    alert('Please fill out all input fields');
+    return;
+  }
+
   clearInputs();
   sendTaskToDB(newTask);
 
