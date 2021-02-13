@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 }); // END OF GET FUNCTION
 
 // this will receive the inputs and send them to the dataBase
-router.post('/putOnServer', (req, res) => {
+router.post('/postOnServer', (req, res) => {
   // the req is the obj from the client.
   // should like like display below function
   // console.log('req.body is:', req.body);
