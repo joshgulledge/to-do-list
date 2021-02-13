@@ -14,7 +14,7 @@ function andGo() {
 
 function completeTaskBtn() {
   console.log('complete task button');
-  console.log($(this).data('id'));
+  console.log($(this).data('id'), $(this).data('bool'));
 }
 
 function deleteBtn() {
@@ -97,7 +97,7 @@ function getData() {
 
 function renderData(itemsList) {
   itemsList.forEach((obj) => {
-    // console.log(obj.complete);
+    // console.log(obj);
     $('.table-of-toDo').append(`
     <tr>
         <td>${obj.task_name}</td>
@@ -105,8 +105,8 @@ function renderData(itemsList) {
         <td>${obj.complete}</td>
         ${
           obj.complete === false
-            ? `<td><button class="complete-task-btn" data-id="${obj.id}">Mark Complete</button></td>`
-            : `<td><button class="complete-task-btn" data-id="${obj.id}">Mark Incomplete</button></td>`
+            ? `<td><button class="complete-task-btn" data-id="${obj.id}" data-bool="${obj.complete}">Mark Complete</button></td>`
+            : `<td><button class="complete-task-btn" data-id="${obj.id}" data-bool="${obj.complete}">Mark Incomplete</button></td>`
         }
         <td><button class="delete-btn" data-id="${obj.id}">Delete</button></td> 
       </tr>
