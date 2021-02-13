@@ -9,6 +9,11 @@ function andGo() {
   // start e listeners
   $('#add-task-btn').on('click', addTask);
   $(document).on('click', '.delete-btn', deleteBtn);
+  $(document).on('click', '.complete-task-btn', completeTaskBtn);
+}
+
+function completeTaskBtn() {
+  console.log('complete task button');
 }
 
 function deleteBtn() {
@@ -19,7 +24,7 @@ function deleteBtn() {
     url: `/toDoItem/${theTask}`,
   })
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       $('.table-of-toDo').empty();
 
       getData();
@@ -91,12 +96,17 @@ function getData() {
 
 function renderData(itemsList) {
   itemsList.forEach((obj) => {
-    // console.log(obj);
+    console.log(obj.complete);
     $('.table-of-toDo').append(`
     <tr>
         <td>${obj.task_name}</td>
         <td>${obj.completion_time}</td>
         <td>${obj.complete}</td>
+        ${
+          obj.complete === false
+            ? `<td><button class="complete-task-btn">Task Complete</button></td>`
+            : `<td>Task Is Complete</td>`
+        }
         <td><button class="delete-btn" data-id="${obj.id}">Delete</button></td> 
       </tr>
     `);

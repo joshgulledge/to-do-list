@@ -79,7 +79,7 @@ router.delete('/:id', (req, res) => {
   pool
     .query(SQLtext, [taskId])
     .then((dbRes) => {
-      console.log('dbRes', dbRes);
+      // console.log('dbRes', dbRes);
       res.sendStatus(200);
     })
     .catch((err) => {
