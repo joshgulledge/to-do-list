@@ -5,7 +5,8 @@ const pool = require('../modules/pool');
 // the "get" information call...
 router.get('/', (req, res) => {
   // set the query that i know works
-  let SQLtext = `SELECT * FROM "to_do_list";`;
+  let SQLtext = `SELECT * FROM "to_do_list"
+  ORDER BY "id" ASC;`;
 
   // send the query to the DB
   pool
@@ -67,7 +68,7 @@ router.delete('/:id', (req, res) => {
   // grab the id of task that was clicked
   let taskId = req.params.id;
 
-  console.log('task id is ', taskId);
+  // console.log('task id is ', taskId);
 
   // the SQL code for the database
   let SQLtext = `
@@ -92,8 +93,7 @@ router.put('/:id', (req, res) => {
   const taskId = req.params.id;
 
   // console.log(req.body.isComplete);
-
-  const newValue = `${req.body.isComplete === true ? false : true}`;
+  const newValue = `${req.body.isComplete === 'true' ? 'false' : 'true'}`;
 
   const SQLtext = `
   UPDATE "to_do_list"

@@ -13,8 +13,24 @@ function andGo() {
 }
 
 function completeTaskBtn() {
-  console.log('complete task button');
   console.log($(this).data('id'), $(this).data('bool'));
+
+  const taskId = $(this).data('id');
+  const isComplete = $(this).data('bool');
+
+  $.ajax({
+    method: 'PUT',
+    url: `/toDoItem/${taskId}`,
+    data: {
+      isComplete,
+    },
+  })
+    .then((res) => {
+      console.log(res);
+      $('.table-of-toDo').empty();
+      getData();
+    })
+    .catch((err) => console.error(err));
 }
 
 function deleteBtn() {
