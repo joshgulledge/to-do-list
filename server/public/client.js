@@ -13,8 +13,6 @@ function andGo() {
 }
 
 function completeTaskBtn() {
-  console.log($(this).data('id'), $(this).data('bool'));
-
   const taskId = $(this).data('id');
   const isComplete = $(this).data('bool');
 
@@ -26,7 +24,6 @@ function completeTaskBtn() {
     },
   })
     .then((res) => {
-      console.log(res);
       $('.table-of-toDo').empty();
       getData();
     })
@@ -80,7 +77,6 @@ function sendTaskToDB(theNewTask) {
     },
   })
     .then((res) => {
-      console.log('response from server', res);
       // clear existing list
       $('.table-of-toDo').empty();
       // get data, now with added task
@@ -115,16 +111,22 @@ function renderData(itemsList) {
   itemsList.forEach((obj) => {
     // console.log(obj);
     $('.table-of-toDo').append(`
-    <tr>
+    <tr ${
+      obj.complete === false
+        ? `class="container bg-warning xtext-white py-2"`
+        : `class="container bg-success text-white py-2"`
+    }>
         <td>${obj.task_name}</td>
         <td>${obj.completion_time}</td>
         <td>${obj.complete}</td>
         ${
           obj.complete === false
-            ? `<td><button class="complete-task-btn" data-id="${obj.id}" data-bool="${obj.complete}">Mark Complete</button></td>`
-            : `<td><button class="complete-task-btn" data-id="${obj.id}" data-bool="${obj.complete}">Mark Incomplete</button></td>`
+            ? `<td><button class="complete-task-btn btn btn-success" data-id="${obj.id}" data-bool="${obj.complete}">Mark Complete</button></td>`
+            : `<td><button class="complete-task-btn btn btn-secondary" data-id="${obj.id}" data-bool="${obj.complete}">Mark Incomplete</button></td>`
         }
-        <td><button class="delete-btn" data-id="${obj.id}">Delete</button></td> 
+        <td><button class="delete-btn btn btn-danger" data-id="${
+          obj.id
+        }">Delete</button></td> 
       </tr>
     `);
   });

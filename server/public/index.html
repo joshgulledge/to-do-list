@@ -21,13 +21,19 @@
     <script src="client.js"></script>
   </head>
   <body>
-    <h1>Things I need to do...</h1>
+    <h1 class="container-fluid">Things I need to do...</h1>
 
-    <div class="new-task-input">
-      <input type="text" id="task-name-input" placeholder="New To Do Task" />
+    <div class="new-task-input container-fluid">
+      <input
+        type="text"
+        class="form-control"
+        id="task-name-input"
+        placeholder="New To Do Task"
+      />
 
       <input
         type="number"
+        class="form-control"
         id="how-long-input"
         placeholder="Est Time To Complete"
       />
@@ -35,13 +41,19 @@
       <input
         type="text"
         id="is-complete"
+        class="form-control"
         placeholder="Is This task Already Completed"
       />
 
-      <input type="button" id="add-task-btn" value="Add The Task" />
+      <input
+        type="button"
+        class="btn btn-success"
+        id="add-task-btn"
+        value="Add The Task"
+      />
     </div>
 
-    <table>
+    <table class="table table-bordered container-fluid">
       <thead>
         <tr>
           <th>Thing To Do</th>
