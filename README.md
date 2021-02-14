@@ -9,4 +9,4 @@ This is a Task Manager App, or a To-Do List if you like that better.
 
 ## Picture
 
-![Picture of Page](https://Images/MainPage.png)
+![Screenshot of App](/Images/MainPage.png)
