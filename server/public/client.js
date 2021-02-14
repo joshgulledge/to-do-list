@@ -24,6 +24,16 @@ function completeTaskBtn() {
     },
   })
     .then((res) => {
+      swal({
+        title: `Marked as ${isComplete === true ? 'Incomplete' : 'Complete'}`,
+        text: `${
+          isComplete === true
+            ? 'You Can finish this task Again!'
+            : 'You Finished the task!'
+        }`,
+        icon: 'success',
+        button: `Continue`,
+      });
       $('.table-of-toDo').empty();
       getData();
     })
@@ -33,17 +43,33 @@ function completeTaskBtn() {
 function deleteBtn() {
   const theTask = $(this).data('id');
 
-  $.ajax({
-    method: 'DELETE',
-    url: `/toDoItem/${theTask}`,
-  })
-    .then((res) => {
-      // console.log(res);
-      $('.table-of-toDo').empty();
+  swal({
+    title: 'Are you sure?',
+    text: 'Once deleted, you will not be able to recover this task!',
+    icon: 'warning',
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      $.ajax({
+        method: 'DELETE',
+        url: `/toDoItem/${theTask}`,
+      })
+        .then((res) => {
+          // console.log(res);
+          $('.table-of-toDo').empty();
 
-      getData();
-    })
-    .catch((err) => console.error(err));
+          getData();
+        })
+        .catch((err) => console.error(err));
+
+      swal('Your task has been deleted!', {
+        icon: 'success',
+      });
+    } else {
+      swal('Your task is safe!');
+    }
+  });
 }
 
 function addTask() {
@@ -69,20 +95,36 @@ function addTask() {
 
 function sendTaskToDB(theNewTask) {
   // console.log('in send task', theNewTask);
-  $.ajax({
-    method: 'POST',
-    url: '/toDoItem/postOnServer',
-    data: {
-      newTask: theNewTask,
-    },
-  })
-    .then((res) => {
-      // clear existing list
-      $('.table-of-toDo').empty();
-      // get data, now with added task
-      getData();
-    })
-    .catch((err) => console.error(err));
+
+  swal({
+    title: 'Are you sure?',
+    text: 'This Task will be added to your list.',
+    icon: 'info',
+    buttons: true,
+    dangerMode: true,
+  }).then((addTheTask) => {
+    if (addTheTask) {
+      $.ajax({
+        method: 'POST',
+        url: '/toDoItem/postOnServer',
+        data: {
+          newTask: theNewTask,
+        },
+      })
+        .then((res) => {
+          // clear existing list
+          $('.table-of-toDo').empty();
+          // get data, now with added task
+          getData();
+        })
+        .catch((err) => console.error(err));
+      swal('You added a Task', {
+        icon: 'success',
+      });
+    } else {
+      swal('No Task was added');
+    }
+  });
 }
 
 function clearInputs() {
