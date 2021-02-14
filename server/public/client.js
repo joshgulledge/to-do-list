@@ -112,9 +112,7 @@ function renderData(itemsList) {
     // console.log(obj);
     $('.table-of-toDo').append(`
     <tr ${
-      obj.complete === false
-        ? `class="container bg-warning xtext-white py-2"`
-        : `class="container bg-success text-white py-2"`
+      obj.complete === false ? `class="table-danger"` : `class="table-success"`
     }>
         <td>${obj.task_name}</td>
         <td>${obj.completion_time}</td>

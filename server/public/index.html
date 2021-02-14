@@ -23,44 +23,61 @@
   <body>
     <h1 class="container-fluid">Things I need to do...</h1>
 
-    <div class="new-task-input container-fluid">
-      <input
-        type="text"
-        class="form-control"
-        id="task-name-input"
-        placeholder="New To Do Task"
-      />
-
-      <input
-        type="number"
-        class="form-control"
-        id="how-long-input"
-        placeholder="Est Time To Complete"
-      />
-
-      <input
-        type="text"
-        id="is-complete"
-        class="form-control"
-        placeholder="Is This task Already Completed"
-      />
-
-      <input
-        type="button"
-        class="btn btn-success"
-        id="add-task-btn"
-        value="Add The Task"
-      />
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <input
+          type="text"
+          class="col align-self-start"
+          id="task-name-input"
+          placeholder="New To Do Task"
+        />
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col">
+          <input
+          type="number"
+          class="col align-self-center"
+          id="how-long-input"
+          placeholder="Est Time To Complete"
+        />
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-6"></div>
+        <div class="col">
+          <input
+          type="text"
+          id="is-complete"
+          class="col align-self-end"
+          placeholder="Is This task Already Completed"
+        />
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-9"></div>
+        <div class="col">
+          <input
+          type="button"
+          class="btn btn-success"
+          id="add-task-btn"
+          value="Add The Task"
+        />
+      </div>
+      </div>
+      </div>
     </div>
 
     <table class="table table-bordered container-fluid">
       <thead>
         <tr>
-          <th>Thing To Do</th>
-          <th>How Long Will It Take</th>
-          <th>Is It Done</th>
-          <th>Mark As Complete</th>
-          <th></th>
+          <th scope="col">Thing To Do</th>
+          <th scope="col">How Long Will It Take</th>
+          <th scope="col">Is It Done</th>
+          <th scope="col">Mark As Complete</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody class="table-of-toDo">

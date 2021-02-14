@@ -1,3 +1,18 @@
-body {
+/* body {
   background-color: aquamarine;
+} */
+.color1 {
+  background-color: red;
+}
+
+.color2 {
+  background-color: blue;
+}
+
+.color3 {
+  background-color: green;
+}
+
+.color4 {
+  background-color: hotpink;
 }
