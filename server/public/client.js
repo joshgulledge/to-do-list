@@ -116,7 +116,7 @@ function renderData(itemsList) {
     }>
         <td>${obj.task_name}</td>
         <td>${obj.completion_time} hours</td>
-        <td>${obj.complete}</td>
+        <td>${obj.complete === false ? 'No' : 'Yes'}</td>
         ${
           obj.complete === false
             ? `<td><button class="complete-task-btn btn btn-success" data-id="${obj.id}" data-bool="${obj.complete}">Mark Complete</button></td>`
