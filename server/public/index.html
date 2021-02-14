@@ -5,39 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Do App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="styles.css" />
     <script src="jquery.js"></script>
     <script src="client.js"></script>
   </head>
   <body>
-    <h1>Things I need to do...</h1>
+    <h1 class="container">Things I need to do...</h1>
 
-    <div class="new-task-input">
-      <input type="text" id="task-name-input" placeholder="New To Do Task" />
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <input
+            type="text"
+            class="col-6 align-self-start"
+            id="task-name-input"
+            placeholder="New To Do Task"
+          />
+        </div>
+      </div>
 
-      <input
-        type="number"
-        id="how-long-input"
-        placeholder="Est Time To Complete"
-      />
+      <div class="row">
+        <div class="col">
+          <input
+            type="number"
+            class="col-4 align-self-center"
+            id="how-long-input"
+            placeholder="Est Hours To Complete"
+          />
+        </div>
+      </div>
 
-      <input
-        type="text"
-        id="is-complete"
-        placeholder="Is This task Already Completed"
-      />
-
-      <input type="button" id="add-task-btn" value="Add The Task" />
+      <div class="row">
+        <div class="col">
+          <input
+            type="text"
+            id="is-complete"
+            class="col-4 align-self-end"
+            placeholder="Is This task Already Completed"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input
+            type="button"
+            class="btn btn-success"
+            id="add-task-btn"
+            value="Add The Task"/>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <table>
+    <table class="table table-hover table-bordered container-fluid">
       <thead>
-        <tr>
+        <tr class="table-info">
           <th>Thing To Do</th>
           <th>How Long Will It Take</th>
           <th>Is It Done</th>
           <th>Mark As Complete</th>
-          <th></th>
+          <th>Delete Task</th>
         </tr>
       </thead>
       <tbody class="table-of-toDo">
