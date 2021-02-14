@@ -115,7 +115,7 @@ function renderData(itemsList) {
       obj.complete === false ? `class="table-danger"` : `class="table-success"`
     }>
         <td>${obj.task_name}</td>
-        <td>${obj.completion_time}</td>
+        <td>${obj.completion_time} hours</td>
         <td>${obj.complete}</td>
         ${
           obj.complete === false
