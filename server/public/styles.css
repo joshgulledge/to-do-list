@@ -4,22 +4,6 @@ body {
   background-size: cover;
 }
 
-.color1 {
-  background-color: red;
-}
-
-.color2 {
-  background-color: blue;
-}
-
-.color3 {
-  background-color: green;
-}
-
-.color4 {
-  background-color: hotpink;
-}
-
 .table {
   --bs-table-bg: transparent;
   --bs-table-striped-color: #212529;

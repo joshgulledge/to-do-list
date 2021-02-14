@@ -7,8 +7,6 @@ This is a Task Manager App, or a To-Do List if you like that better.
 - This app allows you to toggle items between completed and incomplete and delete items.
 - It features bootstrap styling for easy visual indicators of task that are done compared to task that need to be done.
 
-## Description
+## Picture
 
-Your project description goes here. What problem did you solve? How did you solve it?
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+![Picture of Page](https://Images/MainPage.png)
